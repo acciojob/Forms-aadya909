@@ -10,11 +10,11 @@ const FormState = () => {
   });
 
   const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.id]: e.target.value,
-    }));
+    if (!e?.target?.id) return; // Prevent crash
+    const inputId = e.target.id;
+    setFormData({ ...formData, [inputId]: e.target.value });
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

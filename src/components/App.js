@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
 import Form from './Form';
 import FormRef from './FormRef';
 import FormState from './FormState';
@@ -7,20 +8,26 @@ import FormState from './FormState';
 function App() {
   return (
     <Router>
-      <nav style={{ marginBottom: '20px' }}>
-        <Link id="form-link" to="/">Form</Link> | 
-        <Link id="form-ref-link" to="/form-ref">Form with useRef</Link> | 
-        <Link id="form-state-link" to="/form-state">Form with useState</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Form />} />
-        <Route path="/form-ref" element={<FormRef />} />
-        <Route path="/form-state" element={<FormState />} />
-      </Routes>
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/form" id="form-link">Form</Link></li>
+            <li><Link to="/form-ref" id="form-ref-link">Form Ref</Link></li>
+            <li><Link to="/form-state" id="form-state-link">Form State</Link></li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/form" component={Form} />
+          <Route path="/form-ref" component={FormRef} />
+          <Route path="/form-state" component={FormState} />
+        </Switch>
+      </div>
     </Router>
   );
 }
 
 export default App;
+
 
 

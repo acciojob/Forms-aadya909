@@ -13,5 +13,5 @@ const Card = ({ children }) => (
   </div>
 );
 
-export default Card;
+export default Card
 
